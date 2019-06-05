@@ -8,33 +8,33 @@ struct Queue
 	Queue* prev;
 };
 
-Queue * Push(Queue*head, Queue*tail, char symbol)
+void Push(Queue**head, Queue**tail, char symbol)
 {
 	Queue* tmp = (Queue*)malloc(sizeof(Queue));
 	tmp->symbol = symbol;
 
-	if (head == nullptr)
+	if (*head == nullptr)
 	{
-		head = tail = tmp;
-		head->next = tail->prev = nullptr;
+		*head = *tail = tmp;
+		(*head)->next = (*tail)->prev = nullptr;
 	}
 	else if (head == tail)
 	{
-		head->next = tmp = tail;
-		tail->next = nullptr;
-		tmp->prev = head;
+		(*head)->next = tmp;
+		(*tail) = tmp;
+		(*tail)->next = nullptr;
+		tmp->prev = *head;
 	}
 	else
 	{
-		tail->next = tmp;
+		(*tail)->next = tmp;
 		tmp->next = nullptr;
-		tmp->prev = tail;
-		tail = tmp;
+		tmp->prev = *tail;
+		*tail = tmp;
 	}
-	return head;
 }
 
-void Pull(Queue*head, Queue*tail)
+void Pop(Queue*head, Queue*tail)
 {
 	if (head == tail) head = tail = nullptr;
 	else

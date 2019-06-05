@@ -2,5 +2,5 @@
 #include<iostream>
 
 struct Queue;
-Queue* Push(Queue*head, Queue*tail, char symbol);
-void Pull(Queue*head, Queue*tail);
+Queue* Push(Queue**head, Queue**tail, char symbol);
+void Pop(Queue*head, Queue*tail);

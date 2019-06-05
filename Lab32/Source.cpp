@@ -8,8 +8,8 @@ int main()
 {
 	Queue *head, *tail;
 	head = tail = nullptr;
-	head = Push(head, tail, '6');
-	tail = Push(head, tail, '6');
-	tail = Push(head, tail, '6');
+	Push(&head, &tail, '6');
+	Push(&head, &tail, '6');
+	Push(&head, &tail, '6');
 
 }
