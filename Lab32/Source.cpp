@@ -8,8 +8,19 @@ int main()
 {
 	Queue *head, *tail;
 	head = tail = nullptr;
-	Push(&head, &tail, '6');
-	Push(&head, &tail, '6');
-	Push(&head, &tail, '6');
-
+	char str[1000];
+	int tmp;
+	int len = 0;
+	do
+	{
+		len++;
+		scanf_s("%i", &tmp);
+		if (tmp >= 0 && tmp < 256) Push(&head, &tail, tmp);
+	} while (tmp > 0);
+	for (int i = 0; i < len; i++)
+	{
+		str[i] = Pull(head, tail);
+	}
+	puts(str);
+	system("pause");
 }

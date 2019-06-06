@@ -3,15 +3,15 @@
 
 struct Queue
 {
-	char symbol;
+	int number;
 	Queue* next;
 	Queue* prev;
 };
 
-void Push(Queue**head, Queue**tail, char symbol)
+void Push(Queue**head, Queue**tail, int symbol)
 {
 	Queue* tmp = (Queue*)malloc(sizeof(Queue));
-	tmp->symbol = symbol;
+	tmp->number = symbol;
 
 	if (*head == nullptr)
 	{
@@ -34,13 +34,33 @@ void Push(Queue**head, Queue**tail, char symbol)
 	}
 }
 
-void Pop(Queue*head, Queue*tail)
+int Pull(Queue**head, Queue**tail)
 {
-	if (head == tail) head = tail = nullptr;
+	int tmp;
+	if (*head == nullptr)	
+		tmp = -1;	
+	if (head == tail)
+	{
+		tmp = (*head)->number;
+		free((*head));
+	}
 	else
 	{
-		head = head->next;
-		free(head->prev);
-		head->prev = nullptr;
+	  tmp = (*head)->number;
+	 (*head) = (*head)->next;
+	 free((*head)->prev);
+	 (*head)->prev = nullptr;
+	}	
+	return tmp;
+}
+
+void Pop(Queue**head, Queue**tail)
+{
+	if (*head == *tail) *head = *tail = nullptr;
+	else
+	{
+		*head = (*head)->next;
+		free((*head)->prev);
+		(*head)->prev = nullptr;
 	}
 }
