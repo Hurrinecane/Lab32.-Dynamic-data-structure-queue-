@@ -8,10 +8,10 @@ struct Queue
 	Queue* prev;
 };
 
-void Push(Queue**head, Queue**tail, int symbol)
+void Push(Queue**head, Queue**tail, int number)
 {
 	Queue* tmp = (Queue*)malloc(sizeof(Queue));
-	tmp->number = symbol;
+	tmp->number = number;
 
 	if (*head == nullptr)
 	{
@@ -39,7 +39,7 @@ int Pull(Queue**head, Queue**tail)
 	int tmp;
 	if (*head == nullptr)	
 		tmp = -1;	
-	if (head == tail)
+	if (*head == *tail)
 	{
 		tmp = (*head)->number;
 		free((*head));

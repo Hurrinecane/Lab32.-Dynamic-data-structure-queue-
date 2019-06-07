@@ -13,13 +13,17 @@ int main()
 	int len = 0;
 	do
 	{
-		len++;
 		scanf_s("%i", &tmp);
-		if (tmp >= 0 && tmp < 256) Push(&head, &tail, tmp);
+		if (tmp >= 0 && tmp < 256)
+		{
+			Push(&head, &tail, tmp);
+			len++;
+
+		}
 	} while (tmp > 0);
 	for (int i = 0; i < len; i++)
 	{
-		str[i] = Pull(head, tail);
+		str[i] = Pull(&head, &tail);
 	}
 	puts(str);
 	system("pause");
