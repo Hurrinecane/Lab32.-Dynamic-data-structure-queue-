@@ -38,11 +38,12 @@ int Pull(Queue**head, Queue**tail)
 {
 	int tmp;
 	if (*head == nullptr)	
-		tmp = -1;	
+		tmp = NULL;	
 	if (*head == *tail)
 	{
 		tmp = (*head)->number;
 		free((*head));
+		*head = nullptr;
 	}
 	else
 	{
