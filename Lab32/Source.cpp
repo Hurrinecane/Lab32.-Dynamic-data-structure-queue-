@@ -27,4 +27,5 @@ int main()
 	}
 	puts(str);
 	system("pause");
+	Clear(head);
 }

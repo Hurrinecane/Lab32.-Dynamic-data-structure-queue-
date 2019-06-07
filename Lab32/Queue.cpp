@@ -65,3 +65,18 @@ void Pop(Queue**head, Queue**tail)
 		(*head)->prev = nullptr;
 	}
 }
+
+void Clear(Queue* head)
+{
+	Queue*tmp;
+	if (head != nullptr)
+	{
+		while (head->next != nullptr)
+		{
+			tmp = head->next;
+			free(head);
+			head = tmp;
+		}
+		free(head);
+	}
+}
